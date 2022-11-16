@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>QR</title>
+</head>
+<style>
+	body,
+.website-counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+body {
+  height: 100vh;
+  background: url(speed.gif);
+  background-repeat:no-repeat ;
+  background-size: cover;
+}
+
+/* Styles for website counter container */
+.website-counter {
+  background-color: #ff4957;
+  height: 50px;
+  width: 80px;
+  color: white;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 25px;
+  margin-top: 10px;
+}
+
+/* Styles for reset button */
+#reset {
+  margin-top: 20px;
+  background-color: #008cba;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 8px 20px;
+  color: white;
+  border: 0;
+}
+
+</style>
+<body>
+	<button>CLICK HERE Ayush@7209</button>
+	<head>
+  <title>Website Counter</title>
+  <script defer src="index.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div>Your Seat Number is</div>
+  <div class="website-counter"></div>
+  <!-- <button id="reset">Reset</button> -->
+</body>
+
+	<script>
+		var counterContainer = document.querySelector(".website-counter");
+		var resetButton = document.querySelector("#reset");
+		var visitCount = localStorage.getItem("page_view");
+
+		let y = document.cookie;
+		bol = false
+		if(y.includes('seat'))
+			bol=true
+
+	if(bol)
+	{
+		let x = document.cookie;
+		counterContainer.innerHTML = visitCount;
+		console.log("1");
+	}
+	else{
+		console.log("2");
+		if (visitCount) {
+  		visitCount = Number(visitCount) + 1;
+  		localStorage.setItem("page_view", visitCount);
+		} else {
+  		visitCount = 1;
+  		localStorage.setItem("page_view", 1);
+		}
+		counterContainer.innerHTML = visitCount;
+		document.cookie="seat="+visitCount+"; expires=Sun, 18 Dec 2022 12:00:00 UTC; path=/";
+		console.log("3");
+	}
+	
+
+
+	resetButton.addEventListener("click", () => {
+  	visitCount = 1;
+  	localStorage.setItem("page_view", 1);
+  	counterContainer.innerHTML = visitCount;
+	});
+
+	
+	</script>
+</body>
+</html>
